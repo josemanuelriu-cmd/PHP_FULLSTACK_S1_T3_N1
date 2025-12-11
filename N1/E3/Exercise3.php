@@ -16,7 +16,7 @@
 
         <?php
 
-        $Colors = array("red", "green", "blue", "yellow");
+        $Colors = array("red", "green", "blue", "yEllow");
         $Character = 'l';
 
         echo "<h2>Tenim l'array:</h2>";
@@ -37,7 +37,7 @@
 
             $Contains=TRUE;
             foreach ($Colors as $x) {
-                if (!strpos($x, $Character)){
+                if (!strpos(strtolower($x), strtolower($Character))){
                     $Contains = FALSE;
                 }
             }
