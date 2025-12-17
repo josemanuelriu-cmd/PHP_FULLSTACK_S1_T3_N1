@@ -20,7 +20,7 @@
         ?>
         <?php 
             function Cube($value){
-                return($value*$value);
+                return($value*$value*$value);
             }
 
             print_r(array_map("Cube",$MyArray));
