@@ -16,14 +16,14 @@
 
         <?php
 
-        $Colors = array("red", "green", "blue", "yEllow");
-        $Character = 'l';
+        $Colors = array("red", "rgreen", "Rblue", "ryEllow");
+        
 
         echo "<h2>Tenim l'array:</h2>";
         print_r($Colors);
-        echo "<h2>Busquem dins de l'array el caràcter '$Character'</h2><br>";
-        
 
+        $Character = 'l';
+        echo "<h2>Busquem dins de l'array el caràcter '$Character'</h2><br>";
         $Result = SearchCharacterInArray($Colors, $Character);
         ShowResult($Result, $Character);
 
@@ -32,13 +32,26 @@
         $Result = SearchCharacterInArray($Colors, $Character);
         ShowResult($Result, $Character);
 
+        $Character = 'r';
+        echo "<h2>Ara busquem dins de l'array el caràcter '$Character'</h2><br>";
+        $Result = SearchCharacterInArray($Colors, $Character);
+        ShowResult($Result, $Character);
+
 
         function SearchCharacterInArray($Colors, $Character){
 
-            $Contains=TRUE;
+            if (count($Colors) == 0 || $Character == ''){
+                $Contains=FALSE;
+            }else{                
+                $Contains=TRUE;
+            }
             foreach ($Colors as $x) {
-                if (!strpos(strtolower($x), strtolower($Character))){
+                //echo "<h3>Comprovant l'element: $x</h3>";
+                //echo strpos(strtolower($x), strtolower($Character));
+                if (strpos(strtolower($x), strtolower($Character))===false) {
+                    //echo "False<br>";
                     $Contains = FALSE;
+                    break;
                 }
             }
             return $Contains;
