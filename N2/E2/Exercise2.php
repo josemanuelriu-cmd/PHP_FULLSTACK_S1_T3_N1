@@ -26,49 +26,41 @@
         ?>
         <h2>Alumnes i les seves notes</h2>
         <ul>        
-            <?php echo "<li>" . $Alumns[0][0]." - Nota 1: ".$Alumns[0][1]." - Nota 2: ".$Alumns[0][2]." - Nota 3: ".$Alumns[0][3]." - Nota 4: ".$Alumns[0][4]." - Nota 5: ".$Alumns[0][5]."</li><br>";?>
-            <?php echo "<li>" . $Alumns[1][0]." - Nota 1: ".$Alumns[1][1]." - Nota 2: ".$Alumns[1][2]." - Nota 3: ".$Alumns[1][3]." - Nota 4: ".$Alumns[1][4]." - Nota 5: ".$Alumns[1][5]."</li><br>";?>
-            <?php echo "<li>" . $Alumns[2][0]." - Nota 1: ".$Alumns[2][1]." - Nota 2: ".$Alumns[2][2]." - Nota 3: ".$Alumns[2][3]." - Nota 4: ".$Alumns[2][4]." - Nota 5: ".$Alumns[2][5]."</li><br>";?>
-            <?php echo "<li>" . $Alumns[3][0]." - Nota 1: ".$Alumns[3][1]." - Nota 2: ".$Alumns[3][2]." - Nota 3: ".$Alumns[3][3]." - Nota 4: ".$Alumns[3][4]." - Nota 5: ".$Alumns[3][5]."</li><br>";?>
+            <?php foreach ($Alumns as $alumne) {
+                echo "<li>" . $alumne[0]." - Nota 1: ".$alumne[1]." - Nota 2: ".$alumne[2]." - Nota 3: ".$alumne[3]." - Nota 4: ".$alumne[4]." - Nota 5: ".$alumne[5]."</li><br>";
+            } ?>    
         </ul>
 
         <?php
         Mitjanes($Alumns);
 
         function Mitjanes($Alumns){
-            $SumN1 = ($Alumns[0][1] + $Alumns[1][1] + $Alumns[2][1] + $Alumns[3][1]) / count($Alumns);
-            echo "<h3>Mitjana nota 1: ". $SumN1."</h3>";
-            $SumN2 = ($Alumns[0][2] + $Alumns[1][2] + $Alumns[2][2] + $Alumns[3][2]) / count($Alumns);
-            echo "<h3>Mitjana nota 2: ". $SumN2."</h3>";
-            $SumN3 = ($Alumns[0][3] + $Alumns[1][3] + $Alumns[2][3] + $Alumns[3][3]) / count($Alumns);
-            echo "<h3>Mitjana nota 3: ". $SumN3."</h3>";
-            $SumN4 = ($Alumns[0][4] + $Alumns[1][4] + $Alumns[2][4] + $Alumns[3][4]) / count($Alumns);
-            echo "<h3>Mitjana nota 4: ". $SumN4."</h3>";
-            $SumN5 = ($Alumns[0][5] + $Alumns[1][5] + $Alumns[2][5] + $Alumns[3][5]) / count($Alumns);
-            echo "<h3>Mitjana nota 5: ". $SumN5."</h3>";
+            $SumN1=0;$SumN2=0;$SumN3=0;$SumN4=0;$SumN5=0;
+            foreach ($Alumns as $alumne) {
+                $SumN1 += $alumne[1];
+                $SumN2 += $alumne[2];
+                $SumN3 += $alumne[3];
+                $SumN4 += $alumne[4];
+                $SumN5 += $alumne[5];
+            }
+            echo "<h3>Mitjana nota 1: ". $SumN1/count($Alumns)."</h3>";
+            echo "<h3>Mitjana nota 2: ". $SumN2/count($Alumns)."</h3>";
+            echo "<h3>Mitjana nota 3: ". $SumN3/count($Alumns)."</h3>";
+            echo "<h3>Mitjana nota 4: ". $SumN4/count($Alumns)."</h3>";
+            echo "<h3>Mitjana nota 5: ". $SumN5/count($Alumns)."</h3>";
 
-            $MitjA1 = ($Alumns[0][1] + $Alumns[0][2] + $Alumns[0][3] + $Alumns[0][4] + $Alumns[0][5]) / 5;
-            echo "<h3>Mitjana notes ".$Alumns[0][0].": ". $MitjA1."</h3>";
+            $Mitja=0;
+            foreach ($Alumns as $alumne) {
+                $Mitja = ($alumne[1] + $alumne[2] + $alumne[3] + $alumne[4] + $alumne[5]) / 5   ;
+                echo "<h3>Mitjana notes ".$alumne[0].": ". $Mitja."</h3>";                
+            }
 
-            $MitjA2 = ($Alumns[1][1] + $Alumns[1][2] + $Alumns[1][3] + $Alumns[1][4] + $Alumns[1][5]) / 5;
-            echo "<h3>Mitjana notes ".$Alumns[1][0].": ". $MitjA2."</h3>";
 
-            $MitjA3 = ($Alumns[2][1] + $Alumns[2][2] + $Alumns[2][3] + $Alumns[2][4] + $Alumns[2][5]) / 5;
-            echo "<h3>Mitjana notes ".$Alumns[2][0].": ". $MitjA3."</h3>";
-
-            $MitjA4 = ($Alumns[3][1] + $Alumns[3][2] + $Alumns[3][3] + $Alumns[3][4] + $Alumns[3][5]) / 5;
-            echo "<h3>Mitjana notes ".$Alumns[3][0].": ". $MitjA4."</h3>";
-
-             $MitjTot = (
-                $Alumns[0][1] + $Alumns[0][2] + $Alumns[0][3] + $Alumns[0][4] + $Alumns[0][5] +
-                $Alumns[1][1] + $Alumns[1][2] + $Alumns[1][3] + $Alumns[1][4] + $Alumns[1][5] +
-                $Alumns[2][1] + $Alumns[2][2] + $Alumns[2][3] + $Alumns[2][4] + $Alumns[2][5] +
-                $Alumns[3][1] + $Alumns[3][2] + $Alumns[3][3] + $Alumns[3][4] + $Alumns[3][5]
-                ) 
-                / 
-                (count($Alumns)*5);
-            echo "<h3>Mitjana notes total: ". $MitjTot."</h3>";
-
+             $MitjaTot = 0;
+             foreach ($Alumns as $alumne) {
+                $MitjaTot += ($alumne[1] + $alumne[2] + $alumne[3] + $alumne[4] + $alumne[5]);
+             }
+            echo "<h3>Mitjana notes total: ". $MitjaTot/(count($Alumns)*5)."</h3>";
         }
         ?>
     </div>
